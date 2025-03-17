@@ -1,34 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-api
+  name: random-data-generation
   labels:
-    app: simple-api
+    app: random-data-generation
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: simple-api
+      app: random-data-generation
   template:
     metadata:
       labels:
-        app: simple-api
+        app: random-data-generation
     spec:
       containers:
-      - name: simple-api
-        image: simple-api:v1.0.0
+      - name: random-data-generation
+        image: random_data_generation:v1.0.0
         imagePullPolicy: Never # Use the local image
         ports:
         - containerPort: 5000
         livenessProbe:
           httpGet:
-            path: /health
+            path: /generate-data
             port: 5000
           initialDelaySeconds: 5
           periodSeconds: 10
         readinessProbe:
           httpGet:
-            path: /health
+            path: /generate-data
             port: 5000
           initialDelaySeconds: 5
           periodSeconds: 10

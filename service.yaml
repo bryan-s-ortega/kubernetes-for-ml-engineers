@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: simple-api
+  name: random-data-generation
 spec:
   selector:
-    app: simple-api
+    app: random-data-generation
   ports:
     - protocol: TCP
       port: 5000
